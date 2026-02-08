@@ -1,0 +1,152 @@
+:root {
+    --bg: #FFF5F7;
+    --primary-pink: #FFB7C5;
+    --dark-pink: #FF80AB;
+    --text-color: #7A4F59;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: 'Fredoka', sans-serif;
+    margin: 0; padding: 20px;
+    display: flex; justify-content: center;
+    overflow-x: hidden;
+}
+
+.password-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--bg); display: flex; align-items: center; justify-content: center;
+    z-index: 5000; transition: opacity 0.5s ease;
+}
+
+.password-card {
+    background: white; padding: 40px 20px; border-radius: 40px; text-align: center;
+    border: 3px solid var(--primary-pink); width: 85%; max-width: 300px;
+}
+
+#pass-input {
+    width: 80%; padding: 12px; margin: 10px 0; border-radius: 15px; border: 2px solid var(--primary-pink);
+    text-align: center; font-family: 'Fredoka'; font-size: 1.2rem; outline: none;
+}
+
+.unlock-btn {
+    background: var(--dark-pink); color: white; border: none; padding: 12px 30px;
+    border-radius: 20px; font-family: 'Fredoka'; font-size: 1.1rem; cursor: pointer;
+}
+
+.app-container { width: 100%; max-width: 400px; }
+
+.header-card {
+    background: white; border-radius: 35px; padding: 30px 20px;
+    text-align: center; border: 3px solid var(--primary-pink); margin-bottom: 25px;
+}
+
+#days-left {
+    font-size: 5.5rem; color: var(--dark-pink); font-weight: 700;
+    line-height: 1; display: inline-block; animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+.main-title { font-size: 1.2rem; color: var(--text-color); text-align: center; }
+.main-title span b { color: var(--dark-pink); font-size: 1.6rem; }
+
+.featured-letter-box {
+    background: white; border: 2px dashed var(--primary-pink); border-radius: 25px;
+    padding: 15px; margin-bottom: 25px; text-align: center; cursor: pointer;
+}
+
+.calendar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+.door-small {
+    height: 80px; background: white; border: 2px solid var(--primary-pink);
+    border-radius: 20px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; color: var(--dark-pink); cursor: pointer; font-weight: 600;
+}
+
+/* DAY 26 WIDE RECTANGLE */
+.door-small.finale {
+    grid-column: span 3;
+    background: linear-gradient(135deg, #ffffff 0%, #fff0f3 100%);
+    border: 3px solid #FFD700;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.yt-mini-icon { 
+    width: 35px; 
+    height: auto; 
+    border-radius: 6px; 
+    margin: 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Updated black font for dots */
+.dots-hint { font-size: 1.2rem; color: #000000; letter-spacing: 2px; font-weight: 700; }
+
+.door-small.ready { background: var(--primary-pink); color: white; }
+.door-small.finale.ready { background: linear-gradient(135deg, #FFB7C5 0%, #FF80AB 100%); color: white; }
+
+.overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 183, 197, 0.4); backdrop-filter: blur(8px); z-index: 100;
+}
+
+.detail-card {
+    display: none; position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 300px; height: 460px; z-index: 200; perspective: 1000px;
+    opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.detail-card.active { display: block; transform: translate(-50%, -50%) scale(1); opacity: 1; }
+.card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
+.card-inner.flipped { transform: rotateY(180deg); }
+
+.card-front, .card-back {
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+    border-radius: 40px; border: 4px solid var(--primary-pink); display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+.card-front { background: white; color: var(--dark-pink); font-size: 5.5rem; font-weight: 700; }
+.card-back { background: white; transform: rotateY(180deg); padding: 20px; text-align: center; color: var(--text-color); overflow-y: auto; }
+
+.photo-label { font-weight: 700; color: var(--dark-pink); font-size: 0.9rem; margin-top: 5px; }
+.daily-photo { width: 100%; max-height: 180px; object-fit: cover; border-radius: 15px; margin: 5px 0; border: 2px solid var(--primary-pink); }
+
+.letter-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3000; align-items: center; justify-content: center; }
+.parchment { background: #c9ad93; padding: 30px; border-radius: 8px; width: 85%; max-width: 320px; box-shadow: inset 0 0 60px rgba(0,0,0,0.2), 5px 10px 20px rgba(0,0,0,0.4); font-family: 'Dancing Script', cursive; }
+.close-letter-btn.pink-version { background: var(--dark-pink); color: white; border: none; padding: 12px; width: 100%; border-radius: 15px; margin-top: 15px; font-family: 'Fredoka'; cursor: pointer; }
+
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 5000; align-items: center; justify-content: center; }
+.modal-content { background: white; width: 85%; max-width: 300px; padding: 25px; border-radius: 30px; text-align: center; }
+.close-btn { background: var(--dark-pink); color: white; border: none; padding: 12px 25px; border-radius: 15px; margin-top: 15px; cursor: pointer; }
+
+.error-msg { color: #ff6b6b; font-size: 0.85rem; margin-top: 10px; font-weight: 700; }
+
+
+/* Clean Joke Styling */
+.joke-label {
+    font-weight: 700;
+    color: var(--dark-pink);
+    font-size: 0.85rem;
+    margin-top: 12px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.joke-text {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin: 4px 0 10px 0;
+    line-height: 1.4;
+}
+
+/* Black dots for the main grid */
+.dots-hint { 
+    font-size: 1.2rem; 
+    color: #000000; 
+    letter-spacing: 2px; 
+    font-weight: 700; 
+}

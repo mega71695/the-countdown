@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Favorite Intern 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div id="password-screen" class="password-screen">
+        <div class="password-card">
+            <span class="lock-emoji">🔒</span>
+            <h2>내 사랑에게</h2>
+            <p>Enter our special date</p>
+            <input type="text" id="pass-input" placeholder="DD.MM.YY" autocomplete="off">
+            <button class="unlock-btn" onclick="checkPassword()">Unlock</button>
+            <p id="error-msg" class="error-msg"></p>
+        </div>
+    </div>
+
+    <div class="app-container" id="main-content" style="display:none;">
+        <header class="header-card">
+            <div class="countdown-display"><span id="days-left">--</span></div>
+            <h1 class="main-title"><b>more days until</b><br><span><b>my girl is free</b></span></h1>
+        </header>
+
+        <div class="featured-letter-box" onclick="openLetter()">
+            <div class="letter-preview">
+                <span class="seal">✉️</span>
+                <p>A special note from the developer ❤️</p>
+                <small>Tap to read</small>
+            </div>
+        </div>
+
+        <div class="calendar-grid" id="grid"></div>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="closeFocus()"></div>
+    
+    <div id="detail-card" class="detail-card">
+        <div class="card-inner" id="card-inner">
+            <div class="card-front" id="detail-front"></div>
+            <div class="card-back" id="detail-back"></div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h2>Patience, my love! ✋💖</h2>
+            <p>No spoilers! Wait for the right day... 김칫국부터 마시지 말라 </p>
+            <button class="close-btn" onclick="closeModal()">Back to work!</button>
+        </div>
+    </div>
+
+    <div id="letter-overlay" class="letter-overlay" onclick="closeLetter()">
+        <div class="parchment" onclick="event.stopPropagation()">
+            <div class="fountain-pen-text">
+                <p class="date">February 2026</p>
+                <p>To my love,</p>
+                <p>I know these last few weeks of your internship have been a lot of hard work. I built this countdown website for you to remind you every day of how incredibly proud I am of everything you do.</p>
+                <p>You’re almost at the finish line. I’m waiting right here to celebrate the end of this chapter with you. Keep shining, my hardworking girl.</p>
+                <p class="signature">All my love ❤️<br>coo xx</p>
+            </div>
+            <button class="close-letter-btn pink-version" onclick="closeLetter()">Close Letter</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
